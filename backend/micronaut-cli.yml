@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: cz.ufnukanazemle
+testFramework: junit
+sourceLanguage: kotlin
+buildTool: gradle
+features: [annotation-api, app-name, data, data-r2dbc, gradle, http-client, junit, kotlin, kotlin-application, logback, mariadb, netty-server, openapi, r2dbc, readme, security-annotations, security-oauth2, shade, testcontainers, yaml]

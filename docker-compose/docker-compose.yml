@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  mariadb:
+    image: mariadb:10
+    environment:
+      MYSQL_ROOT_PASSWORD: velmitajneheslo1
+      MYSQL_DATABASE: ufnukanazemle
+      MYSQL_USER: ufnukanazemle
+      MYSQL_PASSWORD: menetajneheslo1
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
+      - ./ufnukanazemle-test.sql:/docker-entrypoint-initdb.d/ufnukanazemle-test.sql
+    configs:
+      - source: ufnukanazemle-test.sql
+        target: /docker-entrypoint-initdb.d/ufnukanazemle-test.sql
+        mode: 444
+    command: [ 'mysqld', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci' ]
+
+  adminer:
+    image: adminer:standalone
+    ports:
+      - '8089:8080'
+    environment:
+      - ADMINER_DEFAULT_SERVER=mariadb
+      - TITLE_COLOR=black
+      - TITLE_BACKGROUND=green
+      - TITLE_TEXT=LOCALHOST
+    volumes:
+      - ./titleenv.php:/var/www/html/plugins-enabled/envtitle.php
+
+  maildev:
+    image: djfarrelly/maildev
+    ports:
+      - '8088:80'
+      - '25:25'
