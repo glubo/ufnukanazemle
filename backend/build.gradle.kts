@@ -25,6 +25,7 @@ micronaut {
 val kotlinVersion: String by project
 val arrowVersion: String by project
 val micronautVersion: String by project
+val r2dbcMigrateVersion: String by project
 
 dependencies {
     implementation(project(":frontend"))
@@ -35,6 +36,7 @@ dependencies {
     kapt("io.micronaut.security:micronaut-security-annotations")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-runtime")
+    implementation("io.micronaut:micronaut-cli:1.3.7")
     implementation("io.micronaut.data:micronaut-data-r2dbc")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
     implementation("io.micronaut.r2dbc:micronaut-r2dbc-core")
@@ -55,6 +57,9 @@ dependencies {
     implementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("io.micronaut.test:micronaut-test-junit5")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
+    implementation("name.nkonev.r2dbc-migrate:r2dbc-migrate-core:${r2dbcMigrateVersion}")
+    implementation("name.nkonev.r2dbc-migrate:r2dbc-migrate-resource-reader-reflections:${r2dbcMigrateVersion}")
 }
 
 

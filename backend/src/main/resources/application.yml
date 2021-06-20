@@ -42,6 +42,9 @@ r2dbc:
       schema-generate: none
       dialect: MYSQL
       options:
+  migrate:
+    resources-paths:
+      - db/migration/*.sql
 
 endpoints:
   enabled: true

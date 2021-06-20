@@ -1,5 +1,6 @@
 package cz.ufnukanazemle
 
+import io.micronaut.context.annotation.Bean
 import io.micronaut.runtime.Micronaut.*
 import io.swagger.v3.oas.annotations.*
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType
@@ -39,6 +40,8 @@ fun main(args: Array<String>) {
 	build()
 	    .args(*args)
 		.packages("cz.ufnukanazemle")
+        .eagerInitSingletons(true)
+//        .eagerInitAnnotated(Bean::class.java)
 		.start()
 }
 
