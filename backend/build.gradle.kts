@@ -90,7 +90,8 @@ kapt {
         arg("micronaut.openapi.views.spec", "redoc.enabled=true,rapidoc.enabled=true," +
                 "swagger-ui.enabled=true," +
                 "swagger-ui.theme=flattop," +
-                "swagger-ui.oauth2RedirectUrl=http://localhost:8080/swagger-ui/oauth2-redirect.html")
+                "swagger-ui.oauth2RedirectUrl=BASE_DOMAIN/swagger-ui/oauth2-redirect.html"
+        )
     }
 }
 tasks.test {

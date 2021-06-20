@@ -16,8 +16,8 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme
     bearerFormat = "jwt",
     flows = OAuthFlows(
         authorizationCode = OAuthFlow(
-            authorizationUrl = "https://keycloak.glubo.cz/auth/realms/ufnukanazemle/protocol/openid-connect/auth",
-            tokenUrl = "https://keycloak.glubo.cz/auth/realms/ufnukanazemle/protocol/openid-connect/token",
+            authorizationUrl = "OAUTH2_AUTH_URI",
+            tokenUrl = "OAUTH2_TOKEN_URI",
 //            refreshUrl = "",
             scopes = [
                 OAuthScope(name = "openid"),

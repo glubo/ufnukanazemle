@@ -1,3 +1,10 @@
+base-domain: ${BASE_DOMAIN:`http://localhost:18080`}
+oauth2:
+  realm-uri: ${REALM_URI:`https://keycloak.glubo.cz/auth/realms/ufnukanazemle/protocol/openid-connect`}
+  jwt-certs-uri: ${oauth2.realm-uri}/certs
+  jwt-token-uri: ${oauth2.realm-uri}/token
+  jwt-auth-uri: ${oauth2.realm-uri}/auth
+
 micronaut:
   server:
     port: 18080
@@ -10,7 +17,7 @@ micronaut:
         signatures:
           jwks:
             keycloak:
-              url: ${JWT_CERTS_URI:`https://keycloak.glubo.cz/auth/realms/ufnukanazemle/protocol/openid-connect/certs`}
+              url: ${oauth2.jwt-certs-uri}
     enabled: true
     intercept-url-map:
     - pattern: /swagger/**
