@@ -72,6 +72,11 @@ java {
 }
 
 tasks {
+    dockerBuild {
+        images.empty()
+        images.add("glubo/ufnukanazemle-be:latest")
+        images.add("glubo/ufnukanazemle-be:$version")
+    }
     compileKotlin {
         kotlinOptions {
             jvmTarget = "11"
