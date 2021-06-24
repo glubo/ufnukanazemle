@@ -1,4 +1,4 @@
-base-domain: ${BASE_DOMAIN:`http://localhost:18080`}
+base-domain: ${BASE_DOMAIN:`http://localhost:8080`}
 oauth2:
   realm-uri: ${REALM_URI:`https://keycloak.glubo.cz/auth/realms/ufnukanazemle/protocol/openid-connect`}
   jwt-certs-uri: ${oauth2.realm-uri}/certs
@@ -6,8 +6,6 @@ oauth2:
   jwt-auth-uri: ${oauth2.realm-uri}/auth
 
 micronaut:
-  server:
-    port: 18080
   application:
     name: backend
   security:
@@ -40,12 +38,17 @@ micronaut:
       swagger-ui:
         paths: classpath:META-INF/swagger/views/swagger-ui
         mapping: /swagger-ui/**
+db:
+  host: ${MARIA_HOST:`localhost`}
+  database: ${MARIA_DATABASE:`ufnukanazemle`}
+  username: ${MARIA_USERNAME:ufnukanazemle}
+  password: ${MARIA_PASSWORD:menetajneheslo1}
 r2dbc:
   datasources:
     default:
-      url: r2dbc:mariadb://localhost:3306/ufnukanazemle
-      username: ufnukanazemle
-      password: menetajneheslo1
+      url: r2dbc:mariadb://${db.host}:3306/${db.database}
+      username: ${db.username}
+      password: ${db.password}
       schema-generate: none
       dialect: MYSQL
       options:
