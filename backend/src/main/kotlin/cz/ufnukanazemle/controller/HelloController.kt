@@ -1,9 +1,9 @@
-package cz.ufnukanazemle
+package cz.ufnukanazemle.controller
 
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
-import cz.ufnukanazemle.be.MedicalCentre
+import cz.ufnukanazemle.Roles
 import cz.ufnukanazemle.be.MedicalCentreRepository
 import cz.ufnukanazemle.error.BaseError
 import io.micronaut.http.annotation.Controller
@@ -32,21 +32,6 @@ class HelloController(
     @Get("/error")
     fun error(): Either<BaseError, List<String>> {
         return BaseError("trada").left()
-    }
-
-    @SecurityRequirement(name = "oidc")
-    @Secured(Roles.ROLE_USER)
-    @Get("/role/")
-    fun indexx(): Either<BaseError, Collection<MedicalCentre>> {
-        return medicalCentreRepository.findAll().toIterable().toList().right()
-    }
-
-    @Secured(SecurityRule.IS_ANONYMOUS)
-    @Get("/anon/")
-    fun anon(): Mono<Either<BaseError, Collection<MedicalCentre>>> {
-        return medicalCentreRepository.findAll()
-            .collectList()
-            .map { it.right() }
     }
 //
 //    @Secured(Roles.ROLE_USER)

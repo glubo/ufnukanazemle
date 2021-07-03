@@ -26,11 +26,14 @@ val kotlinVersion: String by project
 val arrowVersion: String by project
 val micronautVersion: String by project
 val r2dbcMigrateVersion: String by project
+val reactorVersion: String by project
 
 dependencies {
     implementation(project(":frontend"))
     implementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
     kapt(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    implementation(platform("io.projectreactor:reactor-bom:$reactorVersion"))
+
     kapt("io.micronaut.data:micronaut-data-processor")
     kapt("io.micronaut.openapi:micronaut-openapi")
     kapt("io.micronaut.security:micronaut-security-annotations")
@@ -48,6 +51,12 @@ dependencies {
     implementation("ch.qos.logback:logback-classic")
     implementation("org.mariadb:r2dbc-mariadb")
     implementation("io.micronaut:micronaut-validation")
+    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+
+
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+
 
     implementation("io.arrow-kt:arrow-core:$arrowVersion")
 

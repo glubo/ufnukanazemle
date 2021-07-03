@@ -40,7 +40,7 @@ micronaut:
         mapping: /swagger-ui/**
 db:
   host: ${MARIA_HOST:`localhost`}
-  database: ${MARIA_DATABASE:`ufnukanazemle`}
+  database: ${MARIA_DATABASE:`ufnukanazemle_test`}
   username: ${MARIA_USERNAME:ufnukanazemle}
   password: ${MARIA_PASSWORD:menetajneheslo1}
 r2dbc:
