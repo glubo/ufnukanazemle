@@ -1,12 +1,12 @@
 import dev.fritz2.binding.RootStore
 import dev.fritz2.dom.html.RenderContext
 import model.L
-import model.MedicalCentre
+import model.MedicalCentreDTO
 import model.MedicalStoreListData
 
 val initMedicalStoreListData = MedicalStoreListData(
     listOf(
-        MedicalCentre(123, "Jmeno", "Adresa", "uzivatel")
+        MedicalCentreDTO(123, "Jmeno", "Adresa", "uzivatel")
     ),
     false,
 )
@@ -19,7 +19,7 @@ object MedicalCentreListStore :
                 data,
                 data.list.filter { it.id != id }
             ),
-            true
+            false
         )
     }
 }
