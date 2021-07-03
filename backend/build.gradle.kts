@@ -81,6 +81,9 @@ java {
 }
 
 tasks {
+    dockerfile {
+        baseImage("adoptopenjdk/openjdk11:alpine-jre")
+    }
     dockerBuild {
         images.empty()
         images.add("glubo/ufnukanazemle-be:latest")
