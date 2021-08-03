@@ -8,4 +8,4 @@
  */
 
 rootProject.name = "cz.ufnukanazemle"
-include("backend", "frontend")
+include("backend", "frontend", "repository")

@@ -9,10 +9,12 @@ import cz.ufnukanazemle.error.BaseError
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.security.annotation.Secured
+import io.micronaut.security.authentication.Authentication
 import io.micronaut.security.rules.SecurityRule
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import model.Framework
 import reactor.core.publisher.Mono
+import java.security.Principal
 
 @Controller("/hello")
 class HelloController(
@@ -22,7 +24,7 @@ class HelloController(
     @SecurityRequirement(name = "oidc")
     @Secured(SecurityRule.IS_AUTHENTICATED)
     @Get("/")
-    fun index(): Either<BaseError, List<String>> {
+    fun index(authentication: Authentication): Either<BaseError, List<String>> {
         Framework("asdas")
         return listOf("Hello World").right()
     }
