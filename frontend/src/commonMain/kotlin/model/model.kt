@@ -5,4 +5,4 @@ import dev.fritz2.lenses.Lenses
 // Put your model data classes in here to use it on js and jvm side
 
 @Lenses
-data class Framework(val name: String)
+data class OAuth(val name: String)

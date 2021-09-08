@@ -3,7 +3,6 @@ package cz.ufnukanazemle.controller
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
-import cz.ufnukanazemle.Roles
 import cz.ufnukanazemle.be.MedicalCentreRepository
 import cz.ufnukanazemle.error.BaseError
 import io.micronaut.http.annotation.Controller
@@ -12,9 +11,7 @@ import io.micronaut.security.annotation.Secured
 import io.micronaut.security.authentication.Authentication
 import io.micronaut.security.rules.SecurityRule
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
-import model.Framework
-import reactor.core.publisher.Mono
-import java.security.Principal
+import model.OAuth
 
 @Controller("/hello")
 class HelloController(
@@ -25,7 +22,7 @@ class HelloController(
     @Secured(SecurityRule.IS_AUTHENTICATED)
     @Get("/")
     fun index(authentication: Authentication): Either<BaseError, List<String>> {
-        Framework("asdas")
+        OAuth("asdas")
         return listOf("Hello World").right()
     }
 

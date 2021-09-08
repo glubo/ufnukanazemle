@@ -1,8 +1,13 @@
 import dev.fritz2.binding.RootStore
 import dev.fritz2.dom.html.RenderContext
+import kotlinx.browser.window
 import model.L
+import model.MedicalCentre
 import model.MedicalCentreDTO
 import model.MedicalStoreListData
+import org.w3c.dom.url.URL
+import org.w3c.dom.url.URLSearchParams
+import kotlin.random.Random
 
 val initMedicalStoreListData = MedicalStoreListData(
     listOf(
@@ -10,6 +15,7 @@ val initMedicalStoreListData = MedicalStoreListData(
     ),
     false,
 )
+
 
 object MedicalCentreListStore :
     RootStore<MedicalStoreListData>(initMedicalStoreListData) {
@@ -27,7 +33,16 @@ object MedicalCentreListStore :
 fun RenderContext.medicalCentreList() {
     section("col-12") {
         h2 {
-            +"Medical Centres"
+            +"Medical Centres "
+        }
+        a {
+            href(OAuthClient().authUri())
+            +"login "
+            +OAuthClient().authUri()
+        }
+
+        div {
+            +"location search: ${window.location.search}"
         }
 
         MedicalCentreListStore.data.render { medicalCentres ->

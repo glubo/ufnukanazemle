@@ -22,6 +22,7 @@ kotlin {
                 // see https://components.fritz2.dev/
                  implementation("dev.fritz2:components:0.11")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
             }
             java {
                 sourceCompatibility = JavaVersion.VERSION_11
@@ -36,6 +37,7 @@ kotlin {
         }
         val jsMain by getting {
             dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-js:1.5.0")
             }
         }
     }
